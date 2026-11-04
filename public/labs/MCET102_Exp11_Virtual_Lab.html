@@ -122,6 +122,7 @@ table.mini td,table.mini th{border:1px solid #d6cfc8;padding:2px 6px;text-align:
 table.mini th{background:#efe7e2}
 table.mini td.rec{background:#e6f1fb}
 @media print{.readbox{display:none}}
+.nosave{background:#fff4e0;border:1px solid #f0c36d;color:#7a4b00;border-radius:8px;padding:8px 12px;margin:8px 16px 0;font-size:14px}
 .instcap{font-size:14px;color:#333;line-height:1.45;margin:6px 6px 2px}
 .copy{text-align:center;font-size:13px;color:#5d6470;margin:4px 0 14px}
 @media print{.copy{display:block}}
@@ -586,17 +587,18 @@ function keyFor(sid){return BASE+'__'+String(sid==null?'':sid).trim();}
 function rd(k){try{var r=localStorage.getItem(k);if(r){var o=JSON.parse(r);if(o&&o.data)return o;}}catch(e){}return null;}
 function hasData(o){if(!o)return false;if(o.data&&Object.keys(o.data).some(function(k){return k.charAt(0)!=='_';}))return true;return !!(o.inp&&Object.keys(o.inp).some(function(k){return o.inp[k]!=null&&o.inp[k]!=='';}));}
 var S=null;
-try{var legacy=rd(BASE);if(legacy){var lsid=String(legacy.info&&legacy.info.sid||'').trim();if(!rd(keyFor(lsid)))localStorage.setItem(keyFor(lsid),JSON.stringify(legacy));localStorage.removeItem(BASE);if(localStorage.getItem(LASTK)==null)localStorage.setItem(LASTK,lsid);}}catch(e){}
-try{var last=localStorage.getItem(LASTK);if(last!=null)S=rd(keyFor(last));}catch(e){}
+try{var legacy=rd(BASE);if(legacy){var lsid=String(legacy.info&&legacy.info.sid||'').trim();if(lsid&&!rd(keyFor(lsid)))localStorage.setItem(keyFor(lsid),JSON.stringify(legacy));localStorage.removeItem(BASE);}localStorage.removeItem(LASTK);localStorage.removeItem(keyFor(''));}catch(e){}
+try{var last=sessionStorage.getItem(LASTK);if(last)S=rd(keyFor(last));}catch(e){}
 S=S||{info:{},data:{},inp:{},log:[]};
 S.info=S.info||{};S.data=S.data||{};S.inp=S.inp||{};
 VL.S=S;
 var saveT=null,dead=false,prevKey=null;
-function flush(){if(dead)return;try{var k=keyFor(S.info.sid);if(!hasData(S)&&hasData(rd(k)))return;/* never overwrite saved work with an empty record */if(prevKey&&prevKey!==k&&!hasData(S)){var po=rd(prevKey);if(!hasData(po))localStorage.removeItem(prevKey);}localStorage.setItem(k,JSON.stringify(S));localStorage.setItem(LASTK,String(S.info.sid||'').trim());prevKey=k;}catch(e){}}
+function flush(){if(dead)return;try{var sid0=String(S.info.sid||'').trim();if(!sid0){sessionStorage.removeItem(LASTK);return;}/* no Student ID: nothing is saved */var k=keyFor(S.info.sid);if(!hasData(S)&&hasData(rd(k)))return;/* never overwrite saved work with an empty record */if(prevKey&&prevKey!==k&&!hasData(S)){var po=rd(prevKey);if(!hasData(po))localStorage.removeItem(prevKey);}localStorage.setItem(k,JSON.stringify(S));sessionStorage.setItem(LASTK,sid0);prevKey=k;}catch(e){}}
 VL.switchStudent=function(n){n=String(n||'').trim();if(n===String(S.info.sid||'').trim())return false;
  var old=String(S.info.sid||'').trim();clearTimeout(saveT);flush();
+ if(!n){try{sessionStorage.removeItem(LASTK);sessionStorage.setItem(BASE+'__msg','Student ID cleared — your work stays saved under ID '+(old||'(none)')+'. Nothing is saved until you enter a Student ID.');}catch(e){}dead=true;location.reload();return true;}
  var rec=rd(keyFor(n));var S2=(rec&&hasData(rec))?rec:{info:{sid:n,section:S.info.section||'',date:S.info.date||'',instr:S.info.instr||''},data:{},inp:{},log:[]};S2.info.sid=n;
- try{localStorage.setItem(keyFor(n),JSON.stringify(S2));localStorage.setItem(LASTK,n);sessionStorage.setItem(BASE+'__msg',hasData(S)?('Switched to Student ID '+n+'. The work saved for ID '+(old||'(none)')+' is kept in this browser — type that ID again to return to it.'):('Welcome back — your saved work for Student ID '+n+' is loaded.'));}catch(e){}
+ try{localStorage.setItem(keyFor(n),JSON.stringify(S2));sessionStorage.setItem(LASTK,n);sessionStorage.setItem(BASE+'__msg',hasData(S)?('Switched to Student ID '+n+'. The work saved for ID '+(old||'(none)')+' is kept in this browser — type that ID again to return to it.'):('Welcome back — your saved work for Student ID '+n+' is loaded.'));}catch(e){}
  dead=true;location.reload();return true;};
 VL.save=function(){clearTimeout(saveT);saveT=setTimeout(flush,120);};
 window.addEventListener('pagehide',function(){clearTimeout(saveT);flush();});
@@ -632,7 +634,7 @@ body.innerHTML=(window.MQ_DEFS||'')+
 '<div class="info"><label class="id">Student ID<input data-info="sid" inputmode="numeric"><span class="small" id="sidHint" style="display:block;color:#b42318"></span></label><label class="nm">Student name<input data-info="name"></label><label>Section<input data-info="section"></label><label>Date<input data-info="date" type="date"></label><label>Instructor<input data-info="instr"></label></div>'+
 '<nav class="tabs"><button data-t="over" class="on">1 &middot; Overview</button><button data-t="sim">2 &middot; Virtual lab</button><button data-t="report">3 &middot; Lab report</button></nav>'+
 '<main><section class="tab on" id="tab-over"></section><section class="tab" id="tab-sim"></section><section class="tab" id="tab-report"></section></main>'+
-'<footer>Readings and answers are saved only in this browser on this device. Use <b>Download report (Word)</b> or <b>Print / PDF</b> on the Lab report tab to submit.<div class="copy">&copy; 2026 Dr. Shaker A. Reda Khojah. All rights reserved.</div></footer>'+
+'<footer>Your work is saved only in this browser, under your Student ID — nothing is saved without an ID. On a shared computer press <b>Clear my work from this computer</b> when you finish. Use <b>Download report (Word)</b> or <b>Print / PDF</b> on the Lab report tab to submit.<div class="copy">&copy; 2026 Dr. Shaker A. Reda Khojah. All rights reserved.</div></footer>'+
 '<div class="alarm" id="alarm"><div class="box"><h3 id="alT">ALARM</h3><div id="alM"></div><div style="margin-top:12px"><button class="btn" id="alOK">Reset &amp; continue</button></div></div></div><div class="toast" id="toast"></div>';
 var idT=null;
 $$('[data-info]').forEach(function(i){var k=i.getAttribute('data-info');i.value=S.info[k]||'';
@@ -739,7 +741,7 @@ LAB.report.forEach(function(sec){
 });
 rh+='<h3>Conclusions</h3><textarea class="concl" data-in="concl" placeholder="Summarise what you measured, how accurate it was and what you learned."></textarea>';
 rh+='<div class="row noprint" style="margin-top:14px"><button class="btn" id="bCheck">Check my answers</button><span id="score" class="score"></span></div>';
-rh+='<div class="row noprint"><button class="btn" id="bWord">Download report (Word)</button><button class="btn s" id="bPrint">Print / save as PDF</button><button class="btn s" id="bData">Download recorded data (.csv)</button><button class="btn s" id="bReset" style="border-color:#b42318;color:#b42318">Clear everything</button><span class="small" id="dlNote"></span></div>';
+rh+='<div class="row noprint"><button class="btn" id="bWord">Download report (Word)</button><button class="btn s" id="bPrint">Print / save as PDF</button><button class="btn s" id="bData">Download recorded data (.csv)</button><button class="btn s" id="bReset" style="border-color:#b42318;color:#b42318">Clear my work from this computer</button><span class="small" id="dlNote"></span></div>';
 rp.innerHTML=rh;
 $$('[data-in]',rp).forEach(function(i){var k=i.getAttribute('data-in');if(S.inp[k]!=null)i.value=S.inp[k];
  var on=function(){S.inp[k]=i.value;VL.save();markOne(k);drawCharts();};i.addEventListener('input',on);i.addEventListener('change',on);});
@@ -780,19 +782,19 @@ $('#bWord').onclick=function(){
  h+='<p>&nbsp;</p><table '+TA+'><tr><td colspan="4" height="70" valign="top"><b>Instructor&rsquo;s comments</b></td></tr><tr><td bgcolor="#EFE7E2" width="22%"><b>Student signature</b></td><td width="28%">&nbsp;</td><td bgcolor="#EFE7E2" width="22%"><b>Instructor signature</b></td><td width="28%">&nbsp;</td></tr></table>';
  var html='<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:w="urn:schemas-microsoft-com:office:word" xmlns="http://www.w3.org/TR/REC-html40"><head><meta charset="utf-8"><title>'+esc(LAB.code+' '+LAB.sheet)+'</title><style>@page{size:A4;margin:2cm}body{font-family:Arial;font-size:11pt}table{border-collapse:collapse;width:100%;margin:6pt 0}td,th{border:1pt solid #000;padding:3pt 5pt;font-family:Arial;font-size:10pt}th{background:#EFE7E2}h3{font-size:12pt;color:#1f3a5f;margin-top:14pt}.small{font-size:9pt;color:#555}</style></head><body><h2 align="center">LAB REPORT</h2>'+h+'<p align="center" style="font-size:9pt;color:#555">&copy; 2026 Dr. Shaker A. Reda Khojah. All rights reserved.</p></body></html>';
  var b=new Blob(['﻿',html],{type:'application/msword'});var a=el('a',{href:URL.createObjectURL(b),download:LAB.code.replace(/\s/g,'')+'_'+LAB.file+'_Report'+(I.sid?'_'+String(I.sid).replace(/[^\w-]/g,''):'')+'.doc'});document.body.appendChild(a);a.click();setTimeout(function(){a.remove();},500);
- var dn=$('#dlNote');if(dn)dn.textContent='Report saved to your Downloads folder. Charts and drawings are in the PDF printout.';};
+ var dn=$('#dlNote');if(dn)dn.textContent='Report saved to your Downloads folder. After you hand it in, press <b>Clear my work from this computer</b> so the next student cannot see it.';};
 $('#bPrint').onclick=function(){VL.tab('report');setTimeout(function(){window.print();},120);};
 $('#bData').onclick=function(){var s='Item,Value\n';Object.keys(S.data).forEach(function(k){s+='"'+k+'","'+String(S.data[k]).replace(/"/g,'""')+'"\n';});var b=new Blob([s],{type:'text/csv'});var a=el('a',{href:URL.createObjectURL(b),download:LAB.code.replace(/\s/g,'')+'_'+LAB.file+'_data.csv'});document.body.appendChild(a);a.click();setTimeout(function(){a.remove();},500);};
 var rsT=null;$('#bReset').onclick=function(){var b=$('#bReset');
- if(!b.classList.contains('armed')){b.classList.add('armed');b.textContent='Click again to clear everything';clearTimeout(rsT);rsT=setTimeout(function(){b.classList.remove('armed');b.textContent='Clear everything';},4000);return;}
- dead=true;clearTimeout(saveT);try{localStorage.removeItem(keyFor(S.info.sid));localStorage.removeItem(LASTK);}catch(e){}location.reload();};
+ if(!b.classList.contains('armed')){b.classList.add('armed');b.textContent='Click again to remove your work from this computer';clearTimeout(rsT);rsT=setTimeout(function(){b.classList.remove('armed');b.textContent='Clear my work from this computer';},4000);return;}
+ dead=true;clearTimeout(saveT);try{localStorage.removeItem(keyFor(S.info.sid));sessionStorage.removeItem(LASTK);}catch(e){}location.reload();};
 
 /* ---------- simulator tab ---------- */
 var sim=$('#tab-sim');
 VL.simRoot=sim;
 VL.mountLog=function(parent){var c=el('div',{class:'ctl'},'<h4>Lab log</h4>');var lg=el('div',{class:'log'});c.appendChild(lg);parent.appendChild(c);VL.logEl=lg;};
 function mountSim(){if(VL.onUnmount){try{VL.onUnmount();}catch(e){}VL.onUnmount=null;}if(window.ESTOP){ESTOP._els=[];}sim.innerHTML='';
- if(!S.info.sid)sim.appendChild(el('div',{class:'note'},'<b>Enter your Student ID at the top first.</b> The ID selects your own set of parts and readings. Without it you get the practice set.'));
+ if(!S.info.sid)sim.appendChild(el('div',{class:'note'},'<b>Enter your Student ID at the top first.</b> The ID selects your own set of parts and readings. Without an ID you get a practice set and <b>nothing is saved</b>.'));
  if(LAB.sim)LAB.sim(sim,VL);}
 
 /* ---------- step guide (beside the lab): what to press and what to type, step by step ---------- */
@@ -815,6 +817,10 @@ function mountSim(){if(VL.onUnmount){try{VL.onUnmount();}catch(e){}VL.onUnmount=
  var _s=VL.save;VL.save=function(){_s.apply(this,arguments);clearTimeout(rT);rT=setTimeout(render,250);};
  render();vis();
 })();
+
+/* ---------- warning while no Student ID is entered (nothing is saved) ---------- */
+(function(){var w=el('div',{class:'nosave',role:'status'},'&#9888; <b>No Student ID</b> &mdash; nothing you do here is saved. Type your Student ID at the top first.');var inf=$('.info');if(inf&&inf.parentNode)inf.parentNode.insertBefore(w,inf.nextSibling);
+ function upd(){w.style.display=String(S.info.sid||'').trim()?'none':'';}var i=$('[data-info="sid"]');if(i)i.addEventListener('input',function(){setTimeout(upd,750);});var _s=VL.save;VL.save=function(){_s.apply(this,arguments);upd();};upd();})();
 VL.remount=mountSim;
 mountSim();
 })();
