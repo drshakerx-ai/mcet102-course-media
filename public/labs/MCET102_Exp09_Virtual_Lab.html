@@ -122,6 +122,9 @@ table.mini td,table.mini th{border:1px solid #d6cfc8;padding:2px 6px;text-align:
 table.mini th{background:#efe7e2}
 table.mini td.rec{background:#e6f1fb}
 @media print{.readbox{display:none}}
+.instcap{font-size:14px;color:#333;line-height:1.45;margin:6px 6px 2px}
+.copy{text-align:center;font-size:13px;color:#5d6470;margin:4px 0 14px}
+@media print{.copy{display:block}}
 
 .guide{position:fixed;top:12px;right:12px;width:256px;max-height:calc(100vh - 24px);overflow:auto;background:#fff;border:2px solid var(--m);border-radius:10px;box-shadow:0 6px 24px rgba(0,0,0,.18);z-index:60;font-size:13px;line-height:1.35}
 .guide h4{margin:0;padding:8px 10px;background:var(--m);color:#fff;display:flex;justify-content:space-between;align-items:center;font-size:14px;position:sticky;top:0}
@@ -197,7 +200,7 @@ DW.drillPlate=function(){var s=DW.hd(640,300);var ox=60,oy=50,f=3;
   if(h[2].indexOf('bore')>0)s+='<circle cx="'+cx+'" cy="'+cy+'" r="'+7.5*f+'" fill="none" stroke="#111" stroke-width="1.4"/>';
   if(h[2].indexOf('sink')>0)s+='<circle cx="'+cx+'" cy="'+cy+'" r="'+7.5*f+'" fill="none" stroke="#111" stroke-width="1.4"/>';
   s+='<circle cx="'+cx+'" cy="'+cy+'" r="'+r+'" fill="none" stroke="#111" stroke-width="1.6"/>'+DW.cl(cx-r-6,cy,cx+r+6,cy)+DW.cl(cx,cy-r-6,cx,cy+r+6);
-  s+='<text x="'+(cx+r+4)+'" y="'+(cy-r-2)+'" font-size="11" fill="#1d3f8f">'+h[2]+'</text>';});
+  s+='<text x="'+(cx+r+4)+'" y="'+(cy-r-2)+'" font-size="13" fill="#1d3f8f">'+h[2]+'</text>';});
  s+=DW.hdim(ox+80*f,ox+100*f,oy-28,oy,'20')+DW.hdim(ox+50*f,ox+100*f,oy-12-30,oy,'50')+DW.hdim(ox+20*f,ox+100*f,oy-12-44,oy,'80');
  s+=DW.vdim(oy+45*f,oy+60*f,ox+100*f+30,ox+100*f,'15')+DW.vdim(oy+30*f,oy+60*f,ox+100*f+55,ox+100*f,'30')+DW.vdim(oy+15*f,oy+60*f,ox+100*f+80,ox+100*f,'45')+DW.vdim(oy,oy+60*f,ox-14,ox,'60');
  s+=DW.hdim(ox,ox+100*f,oy+60*f+28,oy+60*f,'100');
@@ -207,9 +210,10 @@ DW.drillPlate=function(){var s=DW.hd(640,300);var ox=60,oy=50,f=3;
 /* ===== Measuring-instrument pictures, drawn to scale so that the student reads them like the real instrument ===== */
 var INST={};
 INST.f=function(v,d){return (+v).toFixed(d==null?2:d);};
-INST.t=function(x,y,s,o){o=o||{};return '<text x="'+x+'" y="'+y+'" font-size="'+(o.fs||11)+'" text-anchor="'+(o.a||'middle')+'" fill="'+(o.c||'#1d2328')+'"'+(o.w?' font-weight="'+o.w+'"':'')+(o.fam?' font-family="'+o.fam+'"':'')+(o.tr?' transform="'+o.tr+'"':'')+'>'+s+'</text>';};
+INST._cap=[];/* long explanatory lines go below the picture as normal-size text */
+INST.t=function(x,y,s,o){o=o||{};var plain=String(s).replace(/<[^>]*>/g,'');if(!o.w&&plain.length>46){INST._cap.push(String(s));return '';}var fs=o.fs||11;fs=fs<=6?8:(fs<13?16:Math.round(fs*1.25*10)/10);return '<text x="'+x+'" y="'+y+'" font-size="'+fs+'" text-anchor="'+(o.a||'middle')+'" fill="'+(o.c||'#1d2328')+'"'+(o.w?' font-weight="'+o.w+'"':'')+(o.fam?' font-family="'+o.fam+'"':'')+(o.tr?' transform="'+o.tr+'"':'')+'>'+s+'</text>';};
 INST.l=function(x1,y1,x2,y2,c,w){return '<line x1="'+x1.toFixed(2)+'" y1="'+y1.toFixed(2)+'" x2="'+x2.toFixed(2)+'" y2="'+y2.toFixed(2)+'" stroke="'+(c||'#1d2328')+'" stroke-width="'+(w||1)+'"/>';};
-INST.wrap=function(w,h,inner,title){return '<svg viewBox="0 0 '+w+' '+h+'" xmlns="http://www.w3.org/2000/svg" font-family="Arial">'+(title?'<title>'+title+'</title>':'')+inner+'</svg>';};
+INST.wrap=function(w,h,inner,title){var cap=INST._cap.length?'<div class="instcap">'+INST._cap.join('<br>')+'</div>':'';INST._cap=[];return '<svg viewBox="0 0 '+w+' '+h+'" xmlns="http://www.w3.org/2000/svg" font-family="Arial">'+(title?'<title>'+title+'</title>':'')+inner+'</svg>'+cap;};
 
 /* ---------- steel rule against the edge of a part (magnified view) ----------
    val = distance of the part edge from the rule zero (mm); sys 'mm' (0.5 mm lines) or 'in' (1/64 in lines) */
@@ -220,14 +224,14 @@ INST.rule=function(val,sys){var W=760,H=150,s='';var x0=40;
    s+=INST.l(x,40,x,40+L,'#111',qa%16===0?1.3:0.7);
    if(Math.abs(v-Math.round(v))<1e-6)s+=INST.t(x+2,96,Math.round(v),{fs:16,w:700,a:'start'});
    else if(Math.abs(v*8-Math.round(v*8))<1e-6){var e8=Math.round((v%1)*8);var fr=e8%4===0?(e8/4)+'/2':e8%2===0?(e8/2)+'/4':e8+'/8';s+=INST.t(x,92,fr,{fs:8});}}
-  s+=INST.t(W-30,104,'inch · 1/64 graduations',{fs:9,a:'end',c:'#444'});
+  s+=INST.t(W-30,128,'inch · 1/64 graduations',{fs:9,a:'end',c:'#444'});
   var ex=x0+(vin-start)*k;s+='<rect x="0" y="0" width="'+ex.toFixed(1)+'" height="40" fill="url(#mWork)" stroke="#333"/>'+INST.l(ex,0,ex,112,'#b42318',1.2);
  }else{var span2=30;var st=Math.max(0,Math.floor((val-span2*0.6)/5)*5);var k2=(W-80)/span2;
   s+='<rect x="20" y="40" width="'+(W-40)+'" height="70" fill="url(#mSteel)" stroke="#555"/>';
   for(var j=0;j<=span2*2+1;j++){var v2=st+j*0.5;var x2=x0+(v2-st)*k2;if(x2>W-30)break;var h2=Math.round(v2*2);var L2=(h2%20===0)?36:(h2%10===0)?28:(h2%2===0)?18:10;
    s+=INST.l(x2,40,x2,40+L2,'#111',h2%10===0?1.3:0.7);
    if(h2%20===0)s+=INST.t(x2,96,Math.round(v2/10),{fs:16,w:700});}
-  s+=INST.t(W-30,104,'cm · 0.5 mm graduations',{fs:9,a:'end',c:'#444'});
+  s+=INST.t(W-30,128,'cm · 0.5 mm graduations',{fs:9,a:'end',c:'#444'});
   var ex2=x0+(val-st)*k2;s+='<rect x="0" y="0" width="'+ex2.toFixed(1)+'" height="40" fill="url(#mWork)" stroke="#333"/>'+INST.l(ex2,0,ex2,112,'#b42318',1.2);}
  s+=INST.t(10,135,'Magnified view at the edge of the part (red line = edge). Read the graduation that lines up with the edge; the other end of the part is on the zero (reference).',{fs:10,a:'start',c:'#444'});
  return INST.wrap(W,H,s,'Steel rule');};
@@ -484,10 +488,10 @@ M102.shop=function(VL){var r=VL.rng('shop');var L=24000+Math.round(r()*6000),W=1
  return {L:L,W:W,areas:areas};};
 M102.shopSVG=function(S,hl,hd){var s='<svg viewBox="0 0 620 380" xmlns="http://www.w3.org/2000/svg" font-family="Arial">';var k=Math.min(560/S.L,320/S.W);var ox=30,oy=30;
  s+='<rect x="'+ox+'" y="'+oy+'" width="'+S.L*k+'" height="'+S.W*k+'" fill="#e9edf1" stroke="#333" stroke-width="2"/>';
- S.areas.forEach(function(a){var on=hl===a.id;s+='<rect x="'+(ox+a.x*k)+'" y="'+(oy+a.y*k)+'" width="'+a.L*k+'" height="'+a.W*k+'" fill="'+(on?'#fff3c4':'#fafafa')+'" stroke="#f2c94c" stroke-width="'+(on?5:4)+'"/><text x="'+(ox+(a.x+a.L/2)*k)+'" y="'+(oy+(a.y+a.W/2)*k+4)+'" font-size="11" text-anchor="middle" fill="#333">'+a.id+' '+a.name+'</text>';
+ S.areas.forEach(function(a){var on=hl===a.id;s+='<rect x="'+(ox+a.x*k)+'" y="'+(oy+a.y*k)+'" width="'+a.L*k+'" height="'+a.W*k+'" fill="'+(on?'#fff3c4':'#fafafa')+'" stroke="#f2c94c" stroke-width="'+(on?5:4)+'"/><text x="'+(ox+(a.x+a.L/2)*k)+'" y="'+(oy+(a.y+a.W/2)*k+4)+'" font-size="13" text-anchor="middle" fill="#333">'+a.id+' '+a.name+'</text>';
   if(on){var c=hd==='L'?'#b42318':'#1d3f8f',c2=hd==='W'?'#b42318':'#1d3f8f';s+='<line x1="'+(ox+a.x*k)+'" y1="'+(oy+a.y*k-6)+'" x2="'+(ox+(a.x+a.L)*k)+'" y2="'+(oy+a.y*k-6)+'" stroke="'+c+'" stroke-width="2"/><line x1="'+(ox+(a.x+a.L)*k+6)+'" y1="'+(oy+a.y*k)+'" x2="'+(ox+(a.x+a.L)*k+6)+'" y2="'+(oy+(a.y+a.W)*k)+'" stroke="'+c2+'" stroke-width="2"/>';}});
  if(hl==='WS'){s+='<line x1="'+ox+'" y1="'+(oy-10)+'" x2="'+(ox+S.L*k)+'" y2="'+(oy-10)+'" stroke="'+(hd==='L'?'#b42318':'#1d3f8f')+'" stroke-width="2"/><line x1="'+(ox+S.L*k+10)+'" y1="'+oy+'" x2="'+(ox+S.L*k+10)+'" y2="'+(oy+S.W*k)+'" stroke="'+(hd==='W'?'#b42318':'#1d3f8f')+'" stroke-width="2"/>';}
- s+='<text x="'+ox+'" y="'+(oy+S.W*k+22)+'" font-size="11" fill="#555">YIC workshop floor plan (yellow lines mark the machine areas). Yellow lines mark the machine areas.</text>';
+ s+='<text x="'+ox+'" y="'+(oy+S.W*k+22)+'" font-size="13" fill="#555">YIC workshop floor plan (yellow lines mark the machine areas). Yellow lines mark the machine areas.</text>';
  return s+'</svg>';};
 /* ===== bevel-protractor alignment and reading widget (Labs 9 and 10) =====
  o:{truth()->deg, label, onRead(valueDeg, assisted)} ; the blade starts at a random angle and the student turns it until no light shows */
@@ -500,10 +504,10 @@ M102.prot=function(parent,VL,o){var st={a:0,locked:false,n:0};var box=VL.el('div
  function draw(){var t=o.truth(),d=(st.a-t)*60;/* minutes of misalignment */var s='';
   s+='<rect x="0" y="0" width="560" height="230" fill="#f4f6f8"/>';var vx=170,vy=190,R=170;var ta=t*Math.PI/180,aa=st.a*Math.PI/180;
   s+='<path d="M'+vx+' '+vy+' L'+(vx+R)+' '+vy+' A'+R+' '+R+' 0 0 0 '+(vx+R*Math.cos(ta)).toFixed(1)+' '+(vy-R*Math.sin(ta)).toFixed(1)+' Z" fill="url(#mWork)" stroke="#333"/>';
-  s+='<line x1="'+(vx-40)+'" y1="'+vy+'" x2="'+(vx+R+30)+'" y2="'+vy+'" stroke="#2f4553" stroke-width="9" opacity=".75"/><text x="'+(vx+R+34)+'" y="'+(vy+4)+'" font-size="10" fill="#333">stock (reference face)</text>';
-  s+='<line x1="'+vx+'" y1="'+vy+'" x2="'+(vx+(R+40)*Math.cos(aa)).toFixed(1)+'" y2="'+(vy-(R+40)*Math.sin(aa)).toFixed(1)+'" stroke="#1d2328" stroke-width="5" opacity=".9"/><text x="'+(vx+(R+48)*Math.cos(aa)).toFixed(1)+'" y="'+(vy-(R+48)*Math.sin(aa)).toFixed(1)+'" font-size="10" fill="#333">blade</text>';
-  var gap=Math.min(40,Math.abs(d)*1.2);s+='<g transform="translate(400,10)"><rect width="150" height="70" rx="6" fill="#111"/>'+(Math.abs(d)<=2.5?'<text x="75" y="40" font-size="12" fill="#7CFC9A" text-anchor="middle">no light under the blade</text>':'<polygon points="15,55 135,55 '+(d>0?'135,'+(55-gap)+' 15,55':'15,'+(55-gap)+' 15,55')+'" fill="#fff6b0"/><text x="75" y="20" font-size="10" fill="#ddd" text-anchor="middle">light gap seen under the blade</text>')+'</g>';
-  s+='<text x="20" y="222" font-size="11" fill="#555">'+(o.label||'Face being measured')+' — align the blade with the face until no light shows.</text>';sv.innerHTML=s;
+  s+='<line x1="'+(vx-40)+'" y1="'+vy+'" x2="'+(vx+R+30)+'" y2="'+vy+'" stroke="#2f4553" stroke-width="9" opacity=".75"/><text x="'+(vx+R+34)+'" y="'+(vy+4)+'" font-size="13" fill="#333">stock (reference face)</text>';
+  s+='<line x1="'+vx+'" y1="'+vy+'" x2="'+(vx+(R+40)*Math.cos(aa)).toFixed(1)+'" y2="'+(vy-(R+40)*Math.sin(aa)).toFixed(1)+'" stroke="#1d2328" stroke-width="5" opacity=".9"/><text x="'+(vx+(R+48)*Math.cos(aa)).toFixed(1)+'" y="'+(vy-(R+48)*Math.sin(aa)).toFixed(1)+'" font-size="13" fill="#333">blade</text>';
+  var gap=Math.min(40,Math.abs(d)*1.2);s+='<g transform="translate(400,10)"><rect width="150" height="70" rx="6" fill="#111"/>'+(Math.abs(d)<=2.5?'<text x="75" y="40" font-size="12" fill="#7CFC9A" text-anchor="middle">no light under the blade</text>':'<polygon points="15,55 135,55 '+(d>0?'135,'+(55-gap)+' 15,55':'15,'+(55-gap)+' 15,55')+'" fill="#fff6b0"/><text x="75" y="20" font-size="13" fill="#ddd" text-anchor="middle">light gap seen under the blade</text>')+'</g>';
+  s+='<text x="20" y="222" font-size="13" fill="#555">'+(o.label||'Face being measured')+'</text>';sv.innerHTML=s;
   box.querySelector('.pm').textContent=st.locked?'blade locked':'';}
  Array.prototype.forEach.call(box.querySelectorAll('[data-a]'),function(b){SV.hold(b,function(){if(st.locked){VL.toast('Release the blade first');return;}st.a=Math.round((st.a+(+b.getAttribute('data-a')))*12)/12;draw();});});
  var rd=VL.reading({box:rb,label:'Your reading (degrees and minutes, e.g. 72 35)',dm:true,tol:5.01/60,dec:4,truth:function(){return st.locked?st.a:null;},show:function(t){return VL.dm?VL.dm(t):t;},onOk:function(v,as){o.onRead(Math.round(v*12)/12,as);st.n++;start();}});
@@ -603,7 +607,7 @@ body.innerHTML=(window.MQ_DEFS||'')+
 '<div class="info"><label class="id">Student ID<input data-info="sid" inputmode="numeric"><span class="small" id="sidHint" style="display:block;color:#b42318"></span></label><label class="nm">Student name<input data-info="name"></label><label>Section<input data-info="section"></label><label>Date<input data-info="date" type="date"></label><label>Instructor<input data-info="instr"></label></div>'+
 '<nav class="tabs"><button data-t="over" class="on">1 &middot; Overview</button><button data-t="sim">2 &middot; Virtual lab</button><button data-t="report">3 &middot; Lab report</button></nav>'+
 '<main><section class="tab on" id="tab-over"></section><section class="tab" id="tab-sim"></section><section class="tab" id="tab-report"></section></main>'+
-'<footer>Readings and answers are saved only in this browser on this device. Use <b>Download report (Word)</b> or <b>Print / PDF</b> on the Lab report tab to submit.</footer>'+
+'<footer>Readings and answers are saved only in this browser on this device. Use <b>Download report (Word)</b> or <b>Print / PDF</b> on the Lab report tab to submit.<div class="copy">&copy; 2026 Dr. Shaker A. Reda Khojah. All rights reserved.</div></footer>'+
 '<div class="alarm" id="alarm"><div class="box"><h3 id="alT">ALARM</h3><div id="alM"></div><div style="margin-top:12px"><button class="btn" id="alOK">Reset &amp; continue</button></div></div></div><div class="toast" id="toast"></div>';
 var idT=null;
 $$('[data-info]').forEach(function(i){var k=i.getAttribute('data-info');i.value=S.info[k]||'';
@@ -749,7 +753,7 @@ $('#bWord').onclick=function(){
   '<tr><td colspan="2" bgcolor="#EFE7E2"><b>Performance objectives</b></td></tr>'+LAB.objectives.map(function(o,i){return '<tr><td colspan="2">'+(i+1)+'. '+o+'</td></tr>';}).join('')+'</table><p></p>';
  h+=reportForWord();
  h+='<p>&nbsp;</p><table '+TA+'><tr><td colspan="4" height="70" valign="top"><b>Instructor&rsquo;s comments</b></td></tr><tr><td bgcolor="#EFE7E2" width="22%"><b>Student signature</b></td><td width="28%">&nbsp;</td><td bgcolor="#EFE7E2" width="22%"><b>Instructor signature</b></td><td width="28%">&nbsp;</td></tr></table>';
- var html='<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:w="urn:schemas-microsoft-com:office:word" xmlns="http://www.w3.org/TR/REC-html40"><head><meta charset="utf-8"><title>'+esc(LAB.code+' '+LAB.sheet)+'</title><style>@page{size:A4;margin:2cm}body{font-family:Arial;font-size:11pt}table{border-collapse:collapse;width:100%;margin:6pt 0}td,th{border:1pt solid #000;padding:3pt 5pt;font-family:Arial;font-size:10pt}th{background:#EFE7E2}h3{font-size:12pt;color:#1f3a5f;margin-top:14pt}.small{font-size:9pt;color:#555}</style></head><body><h2 align="center">LAB REPORT</h2>'+h+'</body></html>';
+ var html='<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:w="urn:schemas-microsoft-com:office:word" xmlns="http://www.w3.org/TR/REC-html40"><head><meta charset="utf-8"><title>'+esc(LAB.code+' '+LAB.sheet)+'</title><style>@page{size:A4;margin:2cm}body{font-family:Arial;font-size:11pt}table{border-collapse:collapse;width:100%;margin:6pt 0}td,th{border:1pt solid #000;padding:3pt 5pt;font-family:Arial;font-size:10pt}th{background:#EFE7E2}h3{font-size:12pt;color:#1f3a5f;margin-top:14pt}.small{font-size:9pt;color:#555}</style></head><body><h2 align="center">LAB REPORT</h2>'+h+'<p align="center" style="font-size:9pt;color:#555">&copy; 2026 Dr. Shaker A. Reda Khojah. All rights reserved.</p></body></html>';
  var b=new Blob(['﻿',html],{type:'application/msword'});var a=el('a',{href:URL.createObjectURL(b),download:LAB.code.replace(/\s/g,'')+'_'+LAB.file+'_Report'+(I.sid?'_'+String(I.sid).replace(/[^\w-]/g,''):'')+'.doc'});document.body.appendChild(a);a.click();setTimeout(function(){a.remove();},500);
  var dn=$('#dlNote');if(dn)dn.textContent='Report saved to your Downloads folder. Charts and drawings are in the PDF printout.';};
 $('#bPrint').onclick=function(){VL.tab('report');setTimeout(function(){window.print();},120);};

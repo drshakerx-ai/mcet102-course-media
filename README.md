@@ -7,3 +7,5 @@ Narrated step videos and virtual labs for the MCET 102 course site (Yanbu Indust
 - `public/manifest.json` — path, size and SHA-256 of every file.
 
 The Lovable course site serves these files from its own `public/` folder (`/labs/...`, `/videos/...`).
+
+© 2026 Dr. Shaker A. Reda Khojah. All rights reserved.
