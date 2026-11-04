@@ -1,0 +1,514 @@
+{
+"files": [
+{
+"path": "labs/MCET102_Exp01_Virtual_Lab.html",
+"bytes": 143449,
+"sha256": "cf4e098daf1c8ab7c7e48193e2c1c6f0b769e2e6e5ec49e20f149756eb41a0a2"
+},
+{
+"path": "labs/MCET102_Exp02_Virtual_Lab.html",
+"bytes": 142987,
+"sha256": "d3ba021be9a116f9b0da0b42ace3b59dec6dd24efde7c216e9b8af10173d9b28"
+},
+{
+"path": "labs/MCET102_Exp03_Virtual_Lab.html",
+"bytes": 149229,
+"sha256": "73d4a86b0dad8f984a2617158b14cf74eff23e6f67bdc1c5ff8d7f4c5a8e873b"
+},
+{
+"path": "labs/MCET102_Exp04_Virtual_Lab.html",
+"bytes": 143897,
+"sha256": "9b487a3e09d4cda376f45d742667fb5852f0ac0bc8d351468b9767b01531d6ae"
+},
+{
+"path": "labs/MCET102_Exp05_Virtual_Lab.html",
+"bytes": 143489,
+"sha256": "eaff2fad6698ee03f2b1ae55d75661c70c28155d918fb931b8cddf97cc7c349c"
+},
+{
+"path": "labs/MCET102_Exp06_Virtual_Lab.html",
+"bytes": 151848,
+"sha256": "43bad901f56e7b4450d9fb4d30ee0db48a36d0f186e41a36a6fe1922712661b4"
+},
+{
+"path": "labs/MCET102_Exp07_Virtual_Lab.html",
+"bytes": 150878,
+"sha256": "4401ece198f4265e71200037fff8364d4c48618ba505214a3353d0c5a690c509"
+},
+{
+"path": "labs/MCET102_Exp08_Virtual_Lab.html",
+"bytes": 147482,
+"sha256": "62d2e34660d8a5978386fda896d82b36643cd6e5b7359fe8080ca0c57335a885"
+},
+{
+"path": "labs/MCET102_Exp09_Virtual_Lab.html",
+"bytes": 144136,
+"sha256": "ad26f4903ca3c5f0933c22b7601e3ff2a7aa35c0c1ff5ba2a442a321a187e44f"
+},
+{
+"path": "labs/MCET102_Exp10_Virtual_Lab.html",
+"bytes": 149476,
+"sha256": "a83ee3aaf624c6db527a66cd710dcd7b4b3304f8448ee5a929d12de234efff7e"
+},
+{
+"path": "labs/MCET102_Exp11_Virtual_Lab.html",
+"bytes": 148847,
+"sha256": "82d7f937e718223fe51f88c604a0d7e267461c1f7c20dcf84b353f8d8e4ad136"
+},
+{
+"path": "labs/MCET102_Exp12_Virtual_Lab.html",
+"bytes": 150704,
+"sha256": "28b003139f457bec0e84ffe080708b6ca378c8c4eb4a5cdc5309d3e560a95be2"
+},
+{
+"path": "videos/Exp01/MCET102_Exp01_Step01.mp4",
+"bytes": 149629,
+"sha256": "58460df887f11611fc7202e2f5838730b8f0e3c7c7d8331253149d93111d487e"
+},
+{
+"path": "videos/Exp01/MCET102_Exp01_Step02.mp4",
+"bytes": 75979,
+"sha256": "bf9b6c434a362c60b4bb393d55530ba4b22075748a817487fbe91c6e1cc902aa"
+},
+{
+"path": "videos/Exp01/MCET102_Exp01_Step03.mp4",
+"bytes": 97694,
+"sha256": "922f0efcead4dfddcbca5961c518cd0653a9ee0e409989e2ea495f548a7e9d64"
+},
+{
+"path": "videos/Exp01/MCET102_Exp01_Step04.mp4",
+"bytes": 132385,
+"sha256": "25b893f59d7c0bf35525bf78eab904e60adecfd080614aa9b0a6625fe38c31bc"
+},
+{
+"path": "videos/Exp01/MCET102_Exp01_Step05.mp4",
+"bytes": 129327,
+"sha256": "ebd018ded2a4951785dde1754e2bb4da62de31a8e1f9e5126aac0b65ec9265bd"
+},
+{
+"path": "videos/Exp02/MCET102_Exp02_Step01.mp4",
+"bytes": 168201,
+"sha256": "0ec66e18de80c872414f9142ada605dc3137f770741d864c23b23b31f05ef937"
+},
+{
+"path": "videos/Exp02/MCET102_Exp02_Step02.mp4",
+"bytes": 122571,
+"sha256": "a4225ca9fac02d49d0731c1c97bf684cf6bc36dfbd80e6af01dff13e68755043"
+},
+{
+"path": "videos/Exp02/MCET102_Exp02_Step03.mp4",
+"bytes": 84709,
+"sha256": "f7ad8ac535d10818bb066140bed0a102e2f87150dd51996e4595c16629053446"
+},
+{
+"path": "videos/Exp02/MCET102_Exp02_Step04.mp4",
+"bytes": 122357,
+"sha256": "53630eefc5043f04770ef0446de5a6c24939bf47d177fca8f9fc1204f260cf24"
+},
+{
+"path": "videos/Exp02/MCET102_Exp02_Step05.mp4",
+"bytes": 95663,
+"sha256": "b57874ab3ae35e1716c055098cb21a6148e73a1cfd90322e0d8cf3f7ce249b7e"
+},
+{
+"path": "videos/Exp02/MCET102_Exp02_Step06.mp4",
+"bytes": 127021,
+"sha256": "05d3ab67fd03a5d49f5515465f0bb8c212db22f4f9c875af6636aa46b98d3135"
+},
+{
+"path": "videos/Exp02/MCET102_Exp02_Step07.mp4",
+"bytes": 89405,
+"sha256": "0a59f12481bc60c625663fd4250c03aca17dd5bf2b2ffadc251eece5425b52e6"
+},
+{
+"path": "videos/Exp03/MCET102_Exp03_Step01.mp4",
+"bytes": 85818,
+"sha256": "508eb1b33ce9a98290e6a9264e59610daa91f96350072d50649028b6e8533ef2"
+},
+{
+"path": "videos/Exp03/MCET102_Exp03_Step02.mp4",
+"bytes": 58718,
+"sha256": "add6544dae5b32f664034a2f55b5c5742a78a063c20a09f81f8fa45cfb70ff5f"
+},
+{
+"path": "videos/Exp03/MCET102_Exp03_Step03.mp4",
+"bytes": 106011,
+"sha256": "140b1b2f2099b7ee653648d31d7854c5279e489325868f1193c5bc2cab931266"
+},
+{
+"path": "videos/Exp03/MCET102_Exp03_Step04.mp4",
+"bytes": 106185,
+"sha256": "e70301cecfddf7625c12d6d8a1533bbb2df170e19ea8a24dbef03028c636e185"
+},
+{
+"path": "videos/Exp03/MCET102_Exp03_Step05.mp4",
+"bytes": 90159,
+"sha256": "bb9ece87bfe715a212246a49af7cd86fa2a47b0ee936d22ed835e8058fc0136d"
+},
+{
+"path": "videos/Exp03/MCET102_Exp03_Step06.mp4",
+"bytes": 78132,
+"sha256": "bfa02f9e3d079cacda3082ca9e6b962c2598b7407ba4bcf6e0af329770868adc"
+},
+{
+"path": "videos/Exp03/MCET102_Exp03_Step07.mp4",
+"bytes": 119513,
+"sha256": "de12df1848b6236001fe2bd2f1826964c5ca1cb4ebd7eec599e28ca40161e708"
+},
+{
+"path": "videos/Exp03/MCET102_Exp03_Step08.mp4",
+"bytes": 99602,
+"sha256": "786971d8c7f54ce25df204972a36cfa273ec6eaf044fd5d9afa063692b596af7"
+},
+{
+"path": "videos/Exp04/MCET102_Exp04_Step01.mp4",
+"bytes": 108086,
+"sha256": "632682cd114491f079a76c72b21da704e9bb684e6cc77a75c7d7bf666444acde"
+},
+{
+"path": "videos/Exp04/MCET102_Exp04_Step02.mp4",
+"bytes": 71545,
+"sha256": "abefa605a530df020c0b9b0bf03985aa66c1c56403f60995e1ff00c76a87a2d4"
+},
+{
+"path": "videos/Exp04/MCET102_Exp04_Step03.mp4",
+"bytes": 148736,
+"sha256": "1037f599ff24d29832c091d271d786bee392fedc0e69ad2a09d14d7d36f39b51"
+},
+{
+"path": "videos/Exp04/MCET102_Exp04_Step04.mp4",
+"bytes": 181047,
+"sha256": "cad2dfaee143a37d4e9eb89472521f2912fa218a13e632b3ce8aa9e2ef8b5153"
+},
+{
+"path": "videos/Exp04/MCET102_Exp04_Step05.mp4",
+"bytes": 129532,
+"sha256": "22286307c6c8b68097c52d844b19cdb75a45caabf2b96cdce9ccbad04100ceec"
+},
+{
+"path": "videos/Exp04/MCET102_Exp04_Step06.mp4",
+"bytes": 165665,
+"sha256": "e13e38c7a670e78c4bf376c5410a95b7a2a0c3ab052e4911f1d7248fac1fb168"
+},
+{
+"path": "videos/Exp04/MCET102_Exp04_Step07.mp4",
+"bytes": 160437,
+"sha256": "0c81b5c7ac96087f5f1008f769bbadaf88b4180aee0c74c30e89bef8c0edf8a2"
+},
+{
+"path": "videos/Exp04/MCET102_Exp04_Step08.mp4",
+"bytes": 82897,
+"sha256": "f2c4688b0535f66a3851d2e4f1209a1bd432ef4b4a2b8204e81e9b3862b1bb5d"
+},
+{
+"path": "videos/Exp04/MCET102_Exp04_Step09.mp4",
+"bytes": 165945,
+"sha256": "7de6eb52cb923bcab2e4d7f325f06cee6e9811eb284a4d174697f5fc3b20986e"
+},
+{
+"path": "videos/Exp04/MCET102_Exp04_Step10.mp4",
+"bytes": 210808,
+"sha256": "3c66f49f38c949e7faaece047bb206679df646952c69f6931c0ea147ab514b04"
+},
+{
+"path": "videos/Exp05/MCET102_Exp05_Step01.mp4",
+"bytes": 78908,
+"sha256": "0ff544b8f7feeeef12b2bafb51187400a547522b06bd1e8c7992f4d0d4c573a8"
+},
+{
+"path": "videos/Exp05/MCET102_Exp05_Step02.mp4",
+"bytes": 86827,
+"sha256": "e4f100a405e6de62ef439a135dbc557886b4832f9f2887917a78ec73a7f5b2b2"
+},
+{
+"path": "videos/Exp05/MCET102_Exp05_Step03.mp4",
+"bytes": 87356,
+"sha256": "8c9f367f98195b044e8669bf2329f55e509310f1a2935f4a5bd576aee797e4f8"
+},
+{
+"path": "videos/Exp05/MCET102_Exp05_Step04.mp4",
+"bytes": 131253,
+"sha256": "881d93698d5484cacc4d31a010be6854a313f772fea18578acb56b7b2d0f223b"
+},
+{
+"path": "videos/Exp05/MCET102_Exp05_Step05.mp4",
+"bytes": 84725,
+"sha256": "3aa5e50c7fcd87041036165156a7c3c64903f5f34a0864ecf19c79394a300037"
+},
+{
+"path": "videos/Exp05/MCET102_Exp05_Step06.mp4",
+"bytes": 90075,
+"sha256": "685092179d12e620a60d13fd2dd895d1b5e3fc5b176ed9604393b482f797d14f"
+},
+{
+"path": "videos/Exp05/MCET102_Exp05_Step07.mp4",
+"bytes": 152159,
+"sha256": "d21f9301f737c48a0e5a8a883a812fb115c747e57f4774d5f9d50320271616cb"
+},
+{
+"path": "videos/Exp05/MCET102_Exp05_Step08.mp4",
+"bytes": 86526,
+"sha256": "d2d1cd65ffb42759d9118a29dd19ef2ff26adf300e24705905d5118cc1da3e6d"
+},
+{
+"path": "videos/Exp05/MCET102_Exp05_Step09.mp4",
+"bytes": 150417,
+"sha256": "fd545fab14d9ab2245e0ba9218670f097f3c0adfa269eadf88a23a6e68781c8a"
+},
+{
+"path": "videos/Exp06/MCET102_Exp06_Step01.mp4",
+"bytes": 116432,
+"sha256": "55b340e9b5d79433a7c0f05937ec64bfcfa9b5020f3003e3abe5c612a1d4c2a3"
+},
+{
+"path": "videos/Exp06/MCET102_Exp06_Step02.mp4",
+"bytes": 87193,
+"sha256": "1706670b7cca3d594c3b7c768ad3a36b94ab240a09f25a47a2be7896b29cf41f"
+},
+{
+"path": "videos/Exp06/MCET102_Exp06_Step03.mp4",
+"bytes": 76751,
+"sha256": "e091ee73c084e6bb38869fd7cd994066732e86f71f051061f94a295c61335a4d"
+},
+{
+"path": "videos/Exp06/MCET102_Exp06_Step04.mp4",
+"bytes": 91679,
+"sha256": "dc37cd808b4af8eba4c1b1cc7d3f53c70d02ec6574587adc1232149c4cf0bf10"
+},
+{
+"path": "videos/Exp06/MCET102_Exp06_Step05.mp4",
+"bytes": 108960,
+"sha256": "8f3d9dfc893c5c8472ce2740cb0027b29e2bec77fa62b87ed35368ae98cb865e"
+},
+{
+"path": "videos/Exp06/MCET102_Exp06_Step06.mp4",
+"bytes": 104486,
+"sha256": "705eac8233fc46279287c99cbe98a10e9ea8c524b3bfbad60544e7a252bb80fe"
+},
+{
+"path": "videos/Exp06/MCET102_Exp06_Step07.mp4",
+"bytes": 69687,
+"sha256": "142fb4fd895e29eb79e5f6c8bad3bd31d00e94c3023c4606e16e4a683eeb6590"
+},
+{
+"path": "videos/Exp06/MCET102_Exp06_Step08.mp4",
+"bytes": 92530,
+"sha256": "127770185def586d1d7f12bf564992b6e05c1415e62f27c6863b90fec6e020ed"
+},
+{
+"path": "videos/Exp06/MCET102_Exp06_Step09.mp4",
+"bytes": 79161,
+"sha256": "cb3676576b40a9386231356d228eba2e6d6c7fa7d2f52b8e962da3b1b6f1e265"
+},
+{
+"path": "videos/Exp07/MCET102_Exp07_Step01.mp4",
+"bytes": 185934,
+"sha256": "6aa8ed5e884a871560c129974bec8d7c764febeb8ea882fcebd7cc9af783c7c1"
+},
+{
+"path": "videos/Exp07/MCET102_Exp07_Step02.mp4",
+"bytes": 184209,
+"sha256": "56c1f8e19650a5179ce983e6b4518025d5c13d023c5cb0c9f42598397e7b65be"
+},
+{
+"path": "videos/Exp07/MCET102_Exp07_Step03.mp4",
+"bytes": 102608,
+"sha256": "e362038954f0131fbf91b8e353c8caf99bc62b43818c5f9805d97bd99d8637ed"
+},
+{
+"path": "videos/Exp07/MCET102_Exp07_Step04.mp4",
+"bytes": 88620,
+"sha256": "0165ccc49d042eb57fe8f5a6e23732440995265f8fac7676f351449f53d0b0e8"
+},
+{
+"path": "videos/Exp07/MCET102_Exp07_Step05.mp4",
+"bytes": 125524,
+"sha256": "1e23699581259eced536ffa1bc89715db54c896174c63d7825c1796654107eb3"
+},
+{
+"path": "videos/Exp08/MCET102_Exp08_Step01.mp4",
+"bytes": 99662,
+"sha256": "f24c6d3fb62e684ad2ba66f1fccd017be7519f07006a37ac0a5903df97f732d6"
+},
+{
+"path": "videos/Exp08/MCET102_Exp08_Step02.mp4",
+"bytes": 132469,
+"sha256": "8ecc2913a4b43ea70535431b7bacf3e73f50daac6f5bb5287b6a21dcc00d5a69"
+},
+{
+"path": "videos/Exp08/MCET102_Exp08_Step03.mp4",
+"bytes": 66389,
+"sha256": "49734c820f855a995ae2e21da97d45afc00dc54e90ecc1e3a80cc18510f756a2"
+},
+{
+"path": "videos/Exp08/MCET102_Exp08_Step04.mp4",
+"bytes": 85099,
+"sha256": "381fdfb3a30555c39fe7e679121049b63a4ea999c10969eb10fc4231a530a661"
+},
+{
+"path": "videos/Exp08/MCET102_Exp08_Step05.mp4",
+"bytes": 87481,
+"sha256": "b1de01fe11e7f609df17bb9ae5e9c6ea9889ed6d9b07d0ea79fef291c71771bf"
+},
+{
+"path": "videos/Exp08/MCET102_Exp08_Step06.mp4",
+"bytes": 131127,
+"sha256": "2bdf767c2b7c18a86ef5dbd06e88329c31eaa0f40fad7a5230c0831a9caaa460"
+},
+{
+"path": "videos/Exp08/MCET102_Exp08_Step07.mp4",
+"bytes": 71876,
+"sha256": "67e5fc764d97f99815d6a85158819264cb936db60f43a5c77399166195d84526"
+},
+{
+"path": "videos/Exp08/MCET102_Exp08_Step08.mp4",
+"bytes": 82925,
+"sha256": "92739a14b94a4e5880a18ac517e07b55aecf6249e6421472c5098b2509cd5fac"
+},
+{
+"path": "videos/Exp09/MCET102_Exp09_Step01.mp4",
+"bytes": 100838,
+"sha256": "62b2afce9336567e541e5170eff9b9cb35de60cc4a463f6f97b83dfe27992c2e"
+},
+{
+"path": "videos/Exp09/MCET102_Exp09_Step02.mp4",
+"bytes": 88094,
+"sha256": "1eee3f2ee06adcf6772da3a4f09f7e6c8b2ec2843c39fdb2c5e258e4a35e133b"
+},
+{
+"path": "videos/Exp09/MCET102_Exp09_Step03.mp4",
+"bytes": 140482,
+"sha256": "f02849fdd35569203c85d5489f211dc8d22846ecbd4ac70273d4123ad717426a"
+},
+{
+"path": "videos/Exp09/MCET102_Exp09_Step04.mp4",
+"bytes": 127575,
+"sha256": "a23aeb191dd9f2a3bc1f9afde535135dc4e723b0bc9c4f69099ac6ef86668ca6"
+},
+{
+"path": "videos/Exp09/MCET102_Exp09_Step05.mp4",
+"bytes": 128966,
+"sha256": "3c12bcaf2b1383d130514bb78b99b06140d263abd659d035d24bb54d445e8cd9"
+},
+{
+"path": "videos/Exp09/MCET102_Exp09_Step06.mp4",
+"bytes": 85349,
+"sha256": "6d8867debbbfcb540adcade33e203f0d3a4a03683ffa8485342ef9023fa37dca"
+},
+{
+"path": "videos/Exp10/MCET102_Exp10_Step01.mp4",
+"bytes": 138005,
+"sha256": "725c0a0cb661253e46b673a0184f25f6dfd21a4a5148aadb4eb72c96f95e62f5"
+},
+{
+"path": "videos/Exp10/MCET102_Exp10_Step02.mp4",
+"bytes": 108223,
+"sha256": "1f95172b09bfd8361d79644b69f4be8cef3c4dc69f2c671f51e94a1e03f9b0cc"
+},
+{
+"path": "videos/Exp10/MCET102_Exp10_Step03.mp4",
+"bytes": 119923,
+"sha256": "51ac3afd71a51c0b0b636210a0a235bb47ca3388ac8f7f9945783848d9fc915c"
+},
+{
+"path": "videos/Exp10/MCET102_Exp10_Step04.mp4",
+"bytes": 135947,
+"sha256": "f1cb77edb8ec5ed5a469fc387dcbecebacea5c423b38abc3182c3702d7b741bb"
+},
+{
+"path": "videos/Exp10/MCET102_Exp10_Step05.mp4",
+"bytes": 145771,
+"sha256": "ec8a96161abc15c63b75add28752849274d8e09607666ddf515a55ea2ee9f3bd"
+},
+{
+"path": "videos/Exp10/MCET102_Exp10_Step06.mp4",
+"bytes": 133454,
+"sha256": "fe987dfe474267e946f1cf602ad115fee5b01f9ce82869618fb085107481a3ba"
+},
+{
+"path": "videos/Exp10/MCET102_Exp10_Step07.mp4",
+"bytes": 84884,
+"sha256": "68be298d813b61932f388229a6fedf3b1af843654824788959bee3d53fab1ed6"
+},
+{
+"path": "videos/Exp10/MCET102_Exp10_Step08.mp4",
+"bytes": 124322,
+"sha256": "c00d864bba7ee6b425410e1574a82c2fde0d504b51f7f7cc578f4a1a8bb196d8"
+},
+{
+"path": "videos/Exp11/MCET102_Exp11_Step01.mp4",
+"bytes": 87888,
+"sha256": "0dfe79d3f7b58d6b1e3e7862fbaa5921b1c42f276c74be5ef73690c19a138f6e"
+},
+{
+"path": "videos/Exp11/MCET102_Exp11_Step02.mp4",
+"bytes": 75355,
+"sha256": "97305c6eb515956577f2a0eb334f264618486b0e6cacdffbe26297acebba3a25"
+},
+{
+"path": "videos/Exp11/MCET102_Exp11_Step03.mp4",
+"bytes": 64408,
+"sha256": "a1eedc3c47dcafd373f629089c04877eaf0b1083de212148cfc552cd7b426a50"
+},
+{
+"path": "videos/Exp11/MCET102_Exp11_Step04.mp4",
+"bytes": 80796,
+"sha256": "c5ed8fcf926776bd8a3ac8add9c4bcc83633038443e9aac25bd771b121dec9f0"
+},
+{
+"path": "videos/Exp11/MCET102_Exp11_Step05.mp4",
+"bytes": 175026,
+"sha256": "ae5b52a4c15ea07c1d2e1aab7c38be27476e3d61353ed3bc4a84a5d74262c792"
+},
+{
+"path": "videos/Exp11/MCET102_Exp11_Step06.mp4",
+"bytes": 156884,
+"sha256": "b1934519232d6b4cc489bfc6e939cf1f3a4c2622fbc2694f32a19e0ef223d9b0"
+},
+{
+"path": "videos/Exp11/MCET102_Exp11_Step07.mp4",
+"bytes": 97231,
+"sha256": "c1dc1cea8f2fdc1da1f4973970f9af072591684fcd4e30d6215f7665e1b59398"
+},
+{
+"path": "videos/Exp11/MCET102_Exp11_Step08.mp4",
+"bytes": 75007,
+"sha256": "78df53324830468eccd0bb5407ccd699bd902d619615acfe8fb0edf399cbb806"
+},
+{
+"path": "videos/Exp12/MCET102_Exp12_Step01.mp4",
+"bytes": 119146,
+"sha256": "053c78a798843be3cd2d234b7ce56785d4fd687dfb7f3fd21eb2608bace8c0cb"
+},
+{
+"path": "videos/Exp12/MCET102_Exp12_Step02.mp4",
+"bytes": 147126,
+"sha256": "7619e6d38f8480e59535c075cf1e567dd599fcb66a9f49c080ad41ef3d7c9078"
+},
+{
+"path": "videos/Exp12/MCET102_Exp12_Step03.mp4",
+"bytes": 120800,
+"sha256": "172ad7b3608a9279ad1a612fcbb6969a0cf5af994dd9128b175cb5e21a1e180c"
+},
+{
+"path": "videos/Exp12/MCET102_Exp12_Step04.mp4",
+"bytes": 147799,
+"sha256": "8258b64f881739148c22fb0e21bfb65165e7c1314c23404fafd3e4b917185a43"
+},
+{
+"path": "videos/Exp12/MCET102_Exp12_Step05.mp4",
+"bytes": 140836,
+"sha256": "30865863c548f4dcdcf4c1e5c61941b2b817dd16ebb06b8559801e7f4d141b3b"
+},
+{
+"path": "videos/Exp12/MCET102_Exp12_Step06.mp4",
+"bytes": 67026,
+"sha256": "4becf8ef0ab73db8c4f832729b912b5fcd1ac9a4ff7f951db74340625d57fd05"
+},
+{
+"path": "videos/Exp12/MCET102_Exp12_Step07.mp4",
+"bytes": 117830,
+"sha256": "9ebdb544517deac5270dfc360229d8a0a4d943c0d34705ed287df502b620ea57"
+}
+]
+}
