@@ -623,7 +623,8 @@ $$('[data-info]').forEach(function(i){var k=i.getAttribute('data-info');i.value=
 /* the course site can pass the signed-in student: labs/...html?sid=..&name=..&section=.. */
 try{var _q=new URLSearchParams(location.search),_qs=(_q.get('sid')||'').trim();
  if(_qs&&_qs!==String(S.info.sid||'').trim()){if(hasData(S)||hasData(rd(keyFor(_qs)))){VL.switchStudent(_qs);}else{S.info.sid=_qs;$('[data-info="sid"]').value=_qs;VL.save();}}
- ['name','section'].forEach(function(k){var v=(_q.get(k)||'').trim();if(v&&!S.info[k]){S.info[k]=v;var el=$('[data-info="'+k+'"]');if(el)el.value=v;VL.save();}});}catch(e){}
+ ['name','section'].forEach(function(k){var v=(_q.get(k)||'').trim();if(v&&!S.info[k]){S.info[k]=v;var el=$('[data-info="'+k+'"]');if(el)el.value=v;VL.save();}});
+ if(_q.get('lock')==='1'&&_qs){['sid','name'].forEach(function(k){var e=$('[data-info="'+k+'"]');if(e&&e.value){e.readOnly=true;e.title='Set by Blackboard';e.style.background='#eef1f4';}});}}catch(e){}
 try{var _m=sessionStorage.getItem(BASE+'__msg');if(_m){sessionStorage.removeItem(BASE+'__msg');setTimeout(function(){VL.toast(_m);},300);}}catch(e){}
 $$('nav.tabs button').forEach(function(b){b.onclick=function(){VL.tab(b.getAttribute('data-t'));};});
 VL.tab=function(t){$$('nav.tabs button').forEach(function(x){x.classList.toggle('on',x.getAttribute('data-t')===t);});$$('section.tab').forEach(function(s){s.classList.remove('on');});$('#tab-'+t).classList.add('on');if(t==='report'){markAll();drawCharts();}if(t==='sim'&&VL.onShowSim)VL.onShowSim();};
@@ -729,7 +730,7 @@ function judge(c){var id=c.in||c.sel;var inp=$('[data-in="'+id+'"]',rp);if(!inp)
  var good;if(c.sel){var an=typeof c.ans==='function'?c.ans(V,S.data):c.ans;if(an==null){inp.classList.remove('ok','bad');inp.title='Record the readings this answer depends on first';return null;}good=inp.value===String(an);}else{var e=expOf(c);if(e==null||isNaN(e)){inp.classList.remove('ok','bad');inp.title='Record the readings this answer depends on first';return null;}var vv=VL.num(inp.value,c.dm);good=c.abs?within(Math.abs(vv),Math.abs(e),c.tol):within(vv,e,c.tol);}
  inp.classList.toggle('ok',good);inp.classList.toggle('bad',!good);inp.title='';return good;}
 function markOne(k){R.forEach(function(c){if((c.in||c.sel)===k)judge(c);});}
-function markAll(){var ok=0,n=0;R.forEach(function(c){var g=judge(c);if(g!==null){n++;if(g)ok++;}});var sc=$('#score');sc.textContent='Checked: '+n+' · correct: '+ok+(n>ok?' · to review: '+(n-ok):'');sc.style.background=n&&ok===n?'var(--okbg)':'var(--warnbg)';return {ok:ok,n:n};}
+function markAll(){var ok=0,n=0;R.forEach(function(c){var g=judge(c);if(g!==null){n++;if(g)ok++;}});var sc=$('#score');sc.textContent='Checked: '+n+' · correct: '+ok+(n>ok?' · to review: '+(n-ok):'');sc.style.background=n&&ok===n?'var(--okbg)':'var(--warnbg)';/* tell the course app (offline / Blackboard SCORM) the score */try{if(window.parent&&window.parent!==window)window.parent.postMessage({type:'mcet102-lab',lab:LAB.id,sid:String(S.info.sid||''),ok:ok,n:n,total:R.length},'*');}catch(e){}return {ok:ok,n:n};}
 VL.markAll=markAll;
 $('#bCheck').onclick=function(){markAll();};
 function drawCharts(){CH.forEach(function(c){var d=$('#ch-'+c.id);if(d){try{d.innerHTML=c.draw(V,S.data);}catch(e){d.innerHTML='<div class="small">Chart: '+esc(e.message)+'</div>';}}});}
