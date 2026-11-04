@@ -2,63 +2,63 @@
 "files": [
 {
 "path": "labs/MCET102_Exp01_Virtual_Lab.html",
-"bytes": 150007,
-"sha256": "e9f57a34b03177f77d4628f48f3c2eee16816dea9cf379d8cfd47edf51bd5f3a"
+"bytes": 150004,
+"sha256": "e8a9b97f62374eb174356108b8e99b99c72b21760bfa9ab0fd4b16a9efe95e02"
 },
 {
 "path": "labs/MCET102_Exp02_Virtual_Lab.html",
-"bytes": 149632,
-"sha256": "4941b141eb8de35e5e45075ace642d6d84ad8853df243d35e0694d7b8f32d7bb"
+"bytes": 149629,
+"sha256": "b92381bc2f3ad32f4b1c4dc5a3422f952f051b444e7d78ac8206ff034b349502"
 },
 {
 "path": "labs/MCET102_Exp03_Virtual_Lab.html",
-"bytes": 155939,
-"sha256": "b5ba8553d41412672d00dbb8066f5bfd796cf4fb07eb89361794a9393b14be45"
+"bytes": 155936,
+"sha256": "e36de2ff9662be072edc6360a42b63b4dce4c8d30cc48390febb0041f448f90f"
 },
 {
 "path": "labs/MCET102_Exp04_Virtual_Lab.html",
-"bytes": 150577,
-"sha256": "3d6758b03a3bc1d915a22c9a5131ef8d7f519980491997027149710815de9cc8"
+"bytes": 150574,
+"sha256": "32b72d503c2a718ea79f0e3bf2e53d957d260de350bb60efb77047dc62ee9e0f"
 },
 {
 "path": "labs/MCET102_Exp05_Virtual_Lab.html",
-"bytes": 150051,
-"sha256": "00be7468f21975e50e2cd124a382d7c357ede3615c1cb96633343e57c96d716e"
+"bytes": 150048,
+"sha256": "4b11c7f3a765d39c6634dc8471f3f84102286913bf652215fecd2a620d12a3c2"
 },
 {
 "path": "labs/MCET102_Exp06_Virtual_Lab.html",
-"bytes": 158303,
-"sha256": "0200decd0d50a0dfa62b3755f951b7bd95642253dcc84f123612a3b19b001cb8"
+"bytes": 158300,
+"sha256": "5ad466ba19c5dd5e75716b60b2dcac0e9f3c0c67b15b5f568522a05b2720ae14"
 },
 {
 "path": "labs/MCET102_Exp07_Virtual_Lab.html",
-"bytes": 157561,
-"sha256": "c5b157d78f7494f62c78f0dc15bdef2ef1df12905165295db9071405bce0004f"
+"bytes": 157558,
+"sha256": "ba0af040a4846b35dc622b6d1f85ac222cd18fdbe8d515a1e938d54184d6adc6"
 },
 {
 "path": "labs/MCET102_Exp08_Virtual_Lab.html",
-"bytes": 154110,
-"sha256": "285e38d35b1b05a1be0482e855027a5c4b617f3ec9e4cafcfb87e1a07130c3b4"
+"bytes": 154107,
+"sha256": "1215a9327b72503b39b65e543a4b9fda808f916af957fee27c8aa5d30545e08c"
 },
 {
 "path": "labs/MCET102_Exp09_Virtual_Lab.html",
-"bytes": 150557,
-"sha256": "25c6eef569332382008d9e6a158c574be613787cc765b94a6900992b36199dec"
+"bytes": 150554,
+"sha256": "a389ec06d7136b613f2271d5abcaf7c01614aff8f5fea00e699ee2c5ad085051"
 },
 {
 "path": "labs/MCET102_Exp10_Virtual_Lab.html",
-"bytes": 156128,
-"sha256": "0143e03be7a06aba85e1e245223b216eaa044b11fe9fc0aabc224ff2281d83fb"
+"bytes": 156125,
+"sha256": "be66fe640940bf3526d4784897b70c65b803aaae177408d7e894ad9cd2e8d13b"
 },
 {
 "path": "labs/MCET102_Exp11_Virtual_Lab.html",
-"bytes": 154983,
-"sha256": "0f3fa05b76d5ff1bf1878980a072d45f6a33b36db2d9fd3377a296097fd67996"
+"bytes": 154980,
+"sha256": "3aafae5cedca34547b22174bcd3fd955a72a1daff679890e1942fe08381dba21"
 },
 {
 "path": "labs/MCET102_Exp12_Virtual_Lab.html",
-"bytes": 157077,
-"sha256": "28fc1d7a7d9e5e378f4304248a714ade8313014152e63015fd6bd33c18c529d5"
+"bytes": 157074,
+"sha256": "6961a378a4624b519145e35b80b5004fa59eaeb187bfba4a99da8fc10eb6d8a8"
 },
 {
 "path": "videos/Exp01/MCET102_Exp01_Step01.mp4",
